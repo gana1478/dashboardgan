@@ -57,23 +57,20 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
 
-        /* --- KOTAK PREDIKSI BERLAMPU (NEON) --- */
+        /* --- KOTAK PREDIKSI NEON GLOW --- */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
         
         .card { 
             background: #0a0a0a; 
-            border: 1px solid #d4af37; 
+            border: 2px solid #d4af37; 
             border-radius: 15px; 
             padding: 20px; 
-            position: relative;
-            /* Efek Lampu Luar */
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15), inset 0 0 10px rgba(212, 175, 55, 0.05);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
             transition: 0.4s;
         }
 
         .card:hover {
-            /* Lampu makin terang saat di-hover */
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
             transform: translateY(-5px);
         }
 
@@ -85,21 +82,20 @@
             padding-bottom: 10px; 
             text-transform: uppercase;
             text-align: center;
-            letter-spacing: 1px;
-            text-shadow: 0 0 5px rgba(212,175,55,0.5);
+            text-shadow: 0 0 8px rgba(212,175,55,0.6);
         }
         
         .prediksi-text {
             background: #000; 
-            color: #00ff00; 
+            color: #fff; /* Tulisan Putih agar Lampu Gold lebih hidup */
             padding: 15px; 
             border-radius: 10px;
             font-family: 'Courier New', monospace; 
             font-size: 13px; 
             line-height: 1.7;
-            border: 1px solid #1a1a1a; 
+            border: 1px solid #222; 
             white-space: pre-wrap;
-            box-shadow: inset 0 0 10px rgba(0,255,0,0.05);
+            text-shadow: 0 0 2px rgba(255,255,255,0.2);
         }
 
         .btn-copy {
@@ -111,7 +107,7 @@
         .btn-copy:hover { 
             background: #d4af37; 
             color: #000; 
-            box-shadow: 0 0 15px #d4af37;
+            box-shadow: 0 0 20px #d4af37;
         }
     </style>
 </head>
@@ -132,6 +128,7 @@
             <div class="menu-item active" onclick="loadPage('home', this)">🏠 DASHBOARD UTAMA</div>
             <div class="menu-item" onclick="loadPage('togel', this)">📊 PREDIKSI TOGEL</div>
             <div class="menu-item" onclick="loadPage('bank', this)">💳 JADWAL BANK</div>
+            <div class="menu-item" onclick="loadPage('sgp', this)">🧮 PERHITUNGAN SGP TOTO</div>
             <div class="menu-item" onclick="location.reload()" style="color: #ff4444; margin-top: auto;">🚪 LOGOUT</div>
         </div>
 
@@ -141,11 +138,7 @@
                 <div id="clock" style="color: #666; font-size: 12px;"></div>
             </div>
             <div class="content-body" id="main-view">
-                <div class="welcome-box">
-                    <h2 style="color: gold;">Selamat Datang di Gana Panel</h2>
-                    <p style="color: #888; margin-top: 10px;">Gana System Aktif Bos!</p>
                 </div>
-            </div>
         </div>
     </div>
 
@@ -182,6 +175,7 @@
                 document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
                 element.classList.add('active');
             }
+
             if(page === 'home') {
                 title.innerText = "DASHBOARD UTAMA";
                 view.innerHTML = `<div class="welcome-box"><h2 style="color: gold;">Selamat Datang di Gana Panel</h2><p style="color: #888; margin-top: 10px;">Sistem siap digunakan, Bos!</p></div>`;
@@ -196,6 +190,9 @@
             } else if(page === 'bank') {
                 title.innerText = "JADWAL BANK";
                 view.innerHTML = `<div class="card"><h3>STATUS OPERASIONAL</h3><p style="color: #0f0; margin-bottom:10px;">BCA - ONLINE</p><p style="color: #0f0; margin-bottom:10px;">BNI - ONLINE</p><p style="color: #0f0; margin-bottom:10px;">BRI - ONLINE</p><p style="color: #0f0;">MANDIRI - ONLINE</p></div>`;
+            } else if(page === 'sgp') {
+                title.innerText = "PERHITUNGAN SGP TOTO";
+                view.innerHTML = `<div class="card"><h3>KALKULATOR SGP TOTO</h3><p style="color: #d4af37; margin-top: 10px;">Menu perhitungan otomatis sedang diproses...</p></div>`;
             }
         }
         function cp(id) { navigator.clipboard.writeText(document.getElementById(id).innerText); alert("Data Prediksi Berhasil Disalin!"); }
