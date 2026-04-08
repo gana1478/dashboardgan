@@ -4,111 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GANA PREMIUM ADMIN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { height: 100%; background: #000; font-family: 'Segoe UI', sans-serif; color: #eee; overflow: hidden; }
+        body, html { height: 100%; background: #050505; font-family: 'Montserrat', sans-serif; color: #ccc; overflow: hidden; }
 
         /* --- LOGIN SCREEN --- */
         #login-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #111 0%, #000 100%);
-            display: flex; justify-content: center; align-items: center; z-index: 10000;
+            background: #000; display: flex; justify-content: center; align-items: center; z-index: 10000;
         }
         .login-box {
-            width: 350px; padding: 40px; background: #0a0a0a; border: 2px solid #d4af37;
-            border-radius: 15px; text-align: center; box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            width: 350px; padding: 40px; background: #0a0a0a; border: 1px solid #1a1a1a;
+            border-radius: 10px; text-align: center; box-shadow: 0 0 20px rgba(0, 150, 255, 0.1);
         }
-        .login-box h2 { color: #d4af37; margin-bottom: 25px; letter-spacing: 3px; text-shadow: 0 0 10px rgba(212,175,55,0.5); }
+        .login-box h2 { color: #0096ff; margin-bottom: 25px; letter-spacing: 5px; font-size: 20px; }
         .login-box input {
-            width: 100%; padding: 12px; margin-bottom: 15px; background: #151515;
-            border: 1px solid #333; color: gold; border-radius: 8px; outline: none; text-align: center;
+            width: 100%; padding: 12px; margin-bottom: 15px; background: #000;
+            border: 1px solid #222; color: #0096ff; border-radius: 5px; outline: none; text-align: center;
         }
         .login-box button {
-            width: 100%; padding: 12px; background: #d4af37; color: #000;
-            border: none; font-weight: bold; border-radius: 8px; cursor: pointer;
+            width: 100%; padding: 12px; background: #0096ff; color: #fff;
+            border: none; font-weight: bold; border-radius: 5px; cursor: pointer; text-transform: uppercase;
         }
 
-        /* --- LAYOUT --- */
+        /* --- SIDEBAR --- */
         #dashboard { display: none; width: 100vw; height: 100vh; }
-
-        .sidebar {
-            width: 280px; height: 100%; background: #050505; 
-            border-right: 1px solid #1a1a1a; display: flex; flex-direction: column;
-        }
-        .sidebar-brand { padding: 30px 20px; text-align: center; border-bottom: 1px solid #111; }
-        .sidebar-brand h1 { color: gold; font-size: 22px; letter-spacing: 2px; text-shadow: 0 0 10px gold; }
+        .sidebar { width: 260px; height: 100%; background: #080808; border-right: 1px solid #1a1a1a; display: flex; flex-direction: column; }
+        .sidebar-brand { padding: 25px; text-align: center; border-bottom: 1px solid #111; }
+        .sidebar-brand h1 { color: #fff; font-size: 18px; letter-spacing: 4px; font-weight: 700; }
 
         .menu-item {
-            padding: 18px 25px; color: #888; text-decoration: none; cursor: pointer;
-            border-left: 4px solid transparent; transition: 0.3s; font-size: 14px; font-weight: bold;
+            padding: 15px 25px; color: #666; cursor: pointer;
+            border-left: 3px solid transparent; transition: 0.3s; font-size: 13px; font-weight: 600; text-transform: uppercase;
         }
-        .menu-item:hover, .menu-item.active { background: #0d0d0d; color: gold; border-left: 4px solid gold; }
+        .menu-item:hover, .menu-item.active { background: #0f0f0f; color: #0096ff; border-left: 3px solid #0096ff; }
 
-        .main-panel { flex: 1; background: #0d0d0d; display: flex; flex-direction: column; }
-        .header {
-            height: 70px; background: #080808; display: flex; align-items: center;
-            justify-content: space-between; padding: 0 30px; border-bottom: 1px solid #d4af37;
-        }
-        .content-body { flex: 1; padding: 30px; overflow-y: auto; }
+        /* --- MAIN PANEL --- */
+        .main-panel { flex: 1; background: #050505; display: flex; flex-direction: column; }
+        .header { height: 60px; background: #080808; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; border-bottom: 1px solid #111; }
+        .content-body { flex: 1; padding: 25px; overflow-y: auto; }
 
-        .welcome-box {
-            text-align: center; margin-top: 50px; padding: 40px;
-            background: #111; border-radius: 20px; border: 1px solid #d4af37;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-        }
-
-        /* --- KOTAK PREDIKSI NEON GLOW --- */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
-        
+        /* --- KOTAK PREDIKSI DARK NEON --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
         .card { 
             background: #0a0a0a; 
-            border: 2px solid #d4af37; 
-            border-radius: 15px; 
+            border: 1px solid #1a1a1a; 
+            border-radius: 8px; 
             padding: 20px; 
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-            transition: 0.4s;
+            transition: 0.3s;
+            position: relative;
         }
-
-        .card:hover {
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-            transform: translateY(-5px);
+        /* Efek Lampu Neon Garis Tajam */
+        .card:hover { 
+            border-color: #0096ff; 
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.3);
+            transform: translateY(-3px);
         }
 
         .card h3 { 
-            color: #d4af37; 
-            font-size: 16px; 
-            margin-bottom: 15px; 
-            border-bottom: 1px solid #333; 
-            padding-bottom: 10px; 
-            text-transform: uppercase;
-            text-align: center;
-            text-shadow: 0 0 8px rgba(212,175,55,0.6);
+            color: #fff; font-size: 14px; margin-bottom: 15px; 
+            border-bottom: 1px solid #1a1a1a; padding-bottom: 10px; 
+            letter-spacing: 1px; text-align: left;
         }
         
         .prediksi-text {
             background: #000; 
-            color: #fff; /* Tulisan Putih agar Lampu Gold lebih hidup */
-            padding: 15px; 
-            border-radius: 10px;
-            font-family: 'Courier New', monospace; 
-            font-size: 13px; 
-            line-height: 1.7;
-            border: 1px solid #222; 
-            white-space: pre-wrap;
-            text-shadow: 0 0 2px rgba(255,255,255,0.2);
+            color: #aaa; /* Warna Abu-abu Platinum agar tidak silau */
+            padding: 15px; border-radius: 5px;
+            font-family: 'Share Tech Mono', monospace; font-size: 14px;
+            line-height: 1.6; border: 1px solid #111; white-space: pre-wrap;
         }
 
+        /* Warna khusus untuk label di dalam teks */
+        .prediksi-text span { color: #0096ff; font-weight: bold; }
+
         .btn-copy {
-            width: 100%; margin-top: 15px; padding: 12px; background: transparent;
-            color: #d4af37; border: 1px solid #d4af37; border-radius: 8px; 
-            cursor: pointer; font-weight: bold; transition: 0.3s;
-            text-transform: uppercase;
+            width: 100%; margin-top: 15px; padding: 12px; 
+            background: transparent; color: #444; border: 1px solid #222; 
+            border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 11px;
+            transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
         }
-        .btn-copy:hover { 
-            background: #d4af37; 
-            color: #000; 
-            box-shadow: 0 0 20px #d4af37;
-        }
+        .btn-copy:hover { border-color: #0096ff; color: #0096ff; background: rgba(0, 150, 255, 0.05); }
     </style>
 </head>
 <body>
@@ -116,29 +93,28 @@
     <div id="login-screen">
         <div class="login-box">
             <h2>GANA ADMIN</h2>
-            <input type="text" id="user" placeholder="USERNAME">
+            <input type="text" id="user" placeholder="USER ID">
             <input type="password" id="pass" placeholder="PASSWORD">
-            <button onclick="doLogin()">LOGIN SYSTEM</button>
+            <button onclick="doLogin()">AUTHENTICATE</button>
         </div>
     </div>
 
     <div id="dashboard">
         <div class="sidebar">
             <div class="sidebar-brand"><h1>GANA PANEL</h1></div>
-            <div class="menu-item active" onclick="loadPage('home', this)">🏠 DASHBOARD UTAMA</div>
-            <div class="menu-item" onclick="loadPage('togel', this)">📊 PREDIKSI TOGEL</div>
-            <div class="menu-item" onclick="loadPage('bank', this)">💳 JADWAL BANK</div>
-            <div class="menu-item" onclick="loadPage('sgp', this)">🧮 PERHITUNGAN SGP TOTO</div>
-            <div class="menu-item" onclick="location.reload()" style="color: #ff4444; margin-top: auto;">🚪 LOGOUT</div>
+            <div class="menu-item active" onclick="loadPage('home', this)">Dashboard</div>
+            <div class="menu-item" onclick="loadPage('togel', this)">Prediksi Togel</div>
+            <div class="menu-item" onclick="loadPage('bank', this)">Jadwal Bank</div>
+            <div class="menu-item" onclick="loadPage('sgp', this)">SGP Toto Calc</div>
+            <div class="menu-item" onclick="location.reload()" style="color: #444; margin-top: auto;">Logout</div>
         </div>
 
         <div class="main-panel">
             <div class="header">
-                <div id="current-menu" style="color: gold; font-weight: bold;">HOME</div>
-                <div id="clock" style="color: #666; font-size: 12px;"></div>
+                <div id="current-menu" style="color: #0096ff; font-weight: bold; font-size: 12px; letter-spacing: 2px;">DASHBOARD</div>
+                <div id="clock" style="color: #444; font-size: 12px;"></div>
             </div>
-            <div class="content-body" id="main-view">
-                </div>
+            <div class="content-body" id="main-view"></div>
         </div>
     </div>
 
@@ -150,7 +126,7 @@
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('dashboard').style.display = 'flex';
                 loadPage('home');
-            } else { alert("Akses Ditolak!"); }
+            } else { alert("Access Denied"); }
         }
 
         const daftarPasaran = [
@@ -177,25 +153,25 @@
             }
 
             if(page === 'home') {
-                title.innerText = "DASHBOARD UTAMA";
-                view.innerHTML = `<div class="welcome-box"><h2 style="color: gold;">Selamat Datang di Gana Panel</h2><p style="color: #888; margin-top: 10px;">Sistem siap digunakan, Bos!</p></div>`;
+                title.innerText = "DASHBOARD";
+                view.innerHTML = `<div style="border: 1px solid #1a1a1a; padding: 40px; border-radius: 10px; text-align:center;"><h2 style="color: #fff;">System Operational</h2><p style="color: #444; margin-top: 10px;">Gana Premium Admin is now online.</p></div>`;
             } else if(page === 'togel') {
                 title.innerText = "PREDIKSI TOGEL";
                 let html = '<div class="grid">';
                 daftarPasaran.forEach((p, i) => {
-                    let txt = `PREDIKSI ${p}\nRabu, 08 April 2026\n\nBBFS 9021573\nANGKA MAIN 26709\n4D 1610 6637 7253 8175 9901\n2D (BB) 67 64 51 37 06 22 86 01 15 46\nCOLOK BEBAS 3 / 2\nCOLOK BEBAS 2D 46 / 61 / 90\nTWIN 22 / 55 / 00\nSHIO AYAM / MONYET / KAMBING\n\nSelalu Utamakan Prediksi Sendiri`;
-                    html += `<div class="card"><h3>${p}</h3><pre class="prediksi-text" id="p-${i}">${txt}</pre><button class="btn-copy" onclick="cp('p-${i}')">SALIN PREDIKSI</button></div>`;
+                    let txt = `PASARAN: ${p}\nDATE: 08 APRIL 2026\n\nBBFS: 9021573\nAM: 26709\n4D: 1610 6637 7253 8175\n2D: 67 64 51 37 06 22\nCB: 3 / 2\nSHIO: AYAM / MONYET`;
+                    html += `<div class="card"><h3>${p}</h3><pre class="prediksi-text" id="p-${i}">${txt}</pre><button class="btn-copy" onclick="cp('p-${i}')">COPY DATA</button></div>`;
                 });
                 view.innerHTML = html + '</div>';
             } else if(page === 'bank') {
                 title.innerText = "JADWAL BANK";
-                view.innerHTML = `<div class="card"><h3>STATUS OPERASIONAL</h3><p style="color: #0f0; margin-bottom:10px;">BCA - ONLINE</p><p style="color: #0f0; margin-bottom:10px;">BNI - ONLINE</p><p style="color: #0f0; margin-bottom:10px;">BRI - ONLINE</p><p style="color: #0f0;">MANDIRI - ONLINE</p></div>`;
+                view.innerHTML = `<div class="card"><h3>BANK STATUS</h3><p style="color: #0096ff; font-size:12px;">ALL SYSTEMS ONLINE</p></div>`;
             } else if(page === 'sgp') {
-                title.innerText = "PERHITUNGAN SGP TOTO";
-                view.innerHTML = `<div class="card"><h3>KALKULATOR SGP TOTO</h3><p style="color: #d4af37; margin-top: 10px;">Menu perhitungan otomatis sedang diproses...</p></div>`;
+                title.innerText = "SGP TOTO CALC";
+                view.innerHTML = `<div class="card"><h3>CALCULATOR</h3><p style="color: #444;">Calculating module ready.</p></div>`;
             }
         }
-        function cp(id) { navigator.clipboard.writeText(document.getElementById(id).innerText); alert("Data Prediksi Berhasil Disalin!"); }
+        function cp(id) { navigator.clipboard.writeText(document.getElementById(id).innerText); alert("Copied to clipboard"); }
     </script>
 </body>
 </html>
