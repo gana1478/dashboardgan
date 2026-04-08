@@ -7,74 +7,30 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { height: 100%; background: #000; font-family: 'Segoe UI', sans-serif; color: #eee; overflow: hidden; }
-
-        /* --- LOGIN SCREEN --- */
-        #login-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #111 0%, #000 100%);
-            display: flex; justify-content: center; align-items: center; z-index: 10000;
-        }
-        .login-box {
-            width: 350px; padding: 40px; background: #0a0a0a; border: 2px solid #d4af37;
-            border-radius: 15px; text-align: center; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-        }
+        #login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #111 0%, #000 100%); display: flex; justify-content: center; align-items: center; z-index: 10000; }
+        .login-box { width: 350px; padding: 40px; background: #0a0a0a; border: 2px solid #d4af37; border-radius: 15px; text-align: center; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
         .login-box h2 { color: #d4af37; margin-bottom: 25px; letter-spacing: 3px; }
-        .login-box input {
-            width: 100%; padding: 12px; margin-bottom: 15px; background: #151515;
-            border: 1px solid #333; color: gold; border-radius: 8px; outline: none; text-align: center;
-        }
-        .login-box button {
-            width: 100%; padding: 12px; background: #d4af37; color: #000;
-            border: none; font-weight: bold; border-radius: 8px; cursor: pointer;
-        }
-
-        /* --- LAYOUT --- */
+        .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; background: #151515; border: 1px solid #333; color: gold; border-radius: 8px; outline: none; text-align: center; }
+        .login-box button { width: 100%; padding: 12px; background: #d4af37; color: #000; border: none; font-weight: bold; border-radius: 8px; cursor: pointer; }
         #dashboard { display: none; width: 100vw; height: 100vh; }
-
-        .sidebar {
-            width: 280px; height: 100%; background: #050505; 
-            border-right: 1px solid #1a1a1a; display: flex; flex-direction: column;
-        }
+        .sidebar { width: 280px; height: 100%; background: #050505; border-right: 1px solid #1a1a1a; display: flex; flex-direction: column; }
         .sidebar-brand { padding: 30px 20px; text-align: center; border-bottom: 1px solid #111; }
         .sidebar-brand h1 { color: gold; font-size: 20px; letter-spacing: 2px; }
-
-        .menu-item {
-            padding: 18px 25px; color: #888; text-decoration: none; cursor: pointer;
-            border-left: 4px solid transparent; transition: 0.3s; font-size: 14px; font-weight: bold;
-        }
+        .menu-item { padding: 18px 25px; color: #888; text-decoration: none; cursor: pointer; border-left: 4px solid transparent; transition: 0.3s; font-size: 14px; font-weight: bold; }
         .menu-item:hover, .menu-item.active { background: #0d0d0d; color: gold; border-left: 4px solid gold; }
-
         .main-panel { flex: 1; background: #0d0d0d; display: flex; flex-direction: column; }
-        .header {
-            height: 70px; background: #080808; display: flex; align-items: center;
-            justify-content: space-between; padding: 0 30px; border-bottom: 1px solid #d4af37;
-        }
+        .header { height: 70px; background: #080808; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; border-bottom: 1px solid #d4af37; }
         .content-body { flex: 1; padding: 30px; overflow-y: auto; }
-
-        .welcome-box {
-            text-align: center; margin-top: 50px; padding: 40px;
-            background: #111; border-radius: 20px; border: 1px dashed #333;
-        }
-
+        .welcome-box { text-align: center; margin-top: 50px; padding: 40px; background: #111; border-radius: 20px; border: 1px dashed #333; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
-        .card { background: #151515; border: 1px solid #222; border-radius: 12px; padding: 20px; }
+        .card { background: #151515; border: 1px solid #222; border-radius: 12px; padding: 20px; margin-bottom: 10px; }
         .card h3 { color: gold; font-size: 15px; margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 10px; text-transform: uppercase; }
-        
-        .prediksi-text {
-            background: #000; color: #00ff00; padding: 15px; border-radius: 8px;
-            font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6;
-            border: 1px solid #1a1a1a; white-space: pre-wrap;
-        }
-
-        .btn-copy {
-            width: 100%; margin-top: 15px; padding: 12px; background: transparent;
-            color: gold; border: 1px solid gold; border-radius: 6px; cursor: pointer; font-weight: bold;
-        }
+        .prediksi-text { background: #000; color: #00ff00; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; border: 1px solid #1a1a1a; white-space: pre-wrap; }
+        .btn-copy { width: 100%; margin-top: 15px; padding: 12px; background: transparent; color: gold; border: 1px solid gold; border-radius: 6px; cursor: pointer; font-weight: bold; }
         .btn-copy:hover { background: gold; color: #000; }
     </style>
 </head>
 <body>
-
     <div id="login-screen">
         <div class="login-box">
             <h2>GANA ADMIN</h2>
@@ -83,7 +39,6 @@
             <button onclick="doLogin()">LOGIN SYSTEM</button>
         </div>
     </div>
-
     <div id="dashboard">
         <div class="sidebar">
             <div class="sidebar-brand"><h1>GANA PANEL</h1></div>
@@ -92,7 +47,6 @@
             <div class="menu-item" onclick="loadPage('bank', this)">💳 JADWAL BANK</div>
             <div class="menu-item" onclick="location.reload()" style="color: #ff4444; margin-top: auto;">🚪 LOGOUT</div>
         </div>
-
         <div class="main-panel">
             <div class="header">
                 <div id="current-menu" style="color: gold; font-weight: bold;">HOME</div>
@@ -106,12 +60,8 @@
             </div>
         </div>
     </div>
-
     <script>
-        setInterval(() => {
-            document.getElementById('clock').innerText = new Date().toLocaleString('id-ID');
-        }, 1000);
-
+        setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleString('id-ID'); }, 1000);
         function doLogin() {
             if(document.getElementById('user').value === "admin" && document.getElementById('pass').value === "gana77") {
                 document.getElementById('login-screen').style.display = 'none';
@@ -119,10 +69,20 @@
                 loadPage('home');
             } else { alert("Akses Ditolak!"); }
         }
-
-        // LIST 53 PASARAN LENGKAP TANPA POTONGAN
-        const pasarans = ["HOKI DRAW","TOTO MACAU PAGI","KENTUCKY MIDDAY","FLORIDA MIDDAY","HUAHIN 0100","BANGKOK 0130","NEWYORK MIDDAY","CAROLINA DAY","BRUNEI 02","OREGON 03","OREGON 06","CALIFORNIA","FLORIDA EVENING","OREGON 09","BANGKOK 0930","NEWYORK EVENING","KENTUCKY EVENING","CAROLINA EVENING","TOTOCAMBODIA","CHELSEA 11","OREGON 12","POIPET12","BULLSEYE","TOTOMACAU SIANG","SYDNEY","JAKARTA 1400","BRUNEI 14","CHELSEA 15","TOTOMALI 1530","TOTOMACAU 5D SORE","POIPET15","TOTOMACAU SORE","HUAHIN 1630","KING KONG 4D I","SINGAPORE","MAGNUM4D","TOTOMACAU MALAM I","CHELSEA 19","POIPET19","PCSO","TOTOMALI 2030","HUAHIN 2100","CHELSEA 21","TOTOMACAU 5D MALAM","NEVADA","BRUNEI 21","TOTOMACAU MALAM II","POIPET22","HONGKONG","TOTOMACAU MALAM III","TOTOMALI 2330","JAKARTA 2330","KING KONG 4D II"];
-
+        const daftarPasaran = [
+            "HOKI DRAW", "TOTO MACAU PAGI", "KENTUCKY MIDDAY", "FLORIDA MIDDAY", "HUAHIN 0100", 
+            "BANGKOK 0130", "NEWYORK MIDDAY", "CAROLINA DAY", "BRUNEI 02", "OREGON 03", 
+            "OREGON 06", "CALIFORNIA", "FLORIDA EVENING", "OREGON 09", "BANGKOK 0930", 
+            "NEWYORK EVENING", "KENTUCKY EVENING", "CAROLINA EVENING", "TOTOCAMBODIA", 
+            "CHELSEA 11", "OREGON 12", "POIPET12", "BULLSEYE", "TOTOMACAU SIANG", 
+            "SYDNEY", "JAKARTA 1400", "BRUNEI 14", "CHELSEA 15", "TOTOMALI 1530", 
+            "TOTOMACAU 5D SORE", "POIPET15", "TOTOMACAU SORE", "HUAHIN 1630", 
+            "KING KONG 4D I", "SINGAPORE", "MAGNUM4D", "TOTOMACAU MALAM I", 
+            "CHELSEA 19", "POIPET19", "PCSO", "TOTOMALI 2030", "HUAHIN 2100", 
+            "CHELSEA 21", "TOTOMACAU 5D MALAM", "NEVADA", "BRUNEI 21", 
+            "TOTOMACAU MALAM II", "POIPET22", "HONGKONG", "TOTOMACAU MALAM III", 
+            "TOTOMALI 2330", "JAKARTA 2330", "KING KONG 4D II"
+        ];
         function loadPage(page, element) {
             const view = document.getElementById('main-view');
             const title = document.getElementById('current-menu');
@@ -130,14 +90,13 @@
                 document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
                 element.classList.add('active');
             }
-
             if(page === 'home') {
                 title.innerText = "DASHBOARD UTAMA";
                 view.innerHTML = `<div class="welcome-box"><h2 style="color: gold;">Selamat Datang di Gana Panel</h2><p style="color: #888; margin-top: 10px;">Sistem siap digunakan, Bos!</p></div>`;
             } else if(page === 'togel') {
                 title.innerText = "PREDIKSI TOGEL";
                 let html = '<div class="grid">';
-                pasarans.forEach((p, i) => {
+                daftarPasaran.forEach((p, i) => {
                     let txt = `PREDIKSI ${p}\nRabu, 08 April 2026\n\nBBFS 9021573\nANGKA MAIN 26709\n4D 1610 6637 7253 8175 9901\n2D (BB) 67 64 51 37 06 22 86 01 15 46\nCOLOK BEBAS 3 / 2\nCOLOK BEBAS 2D 46 / 61 / 90\nTWIN 22 / 55 / 00\nSHIO AYAM / MONYET / KAMBING\n\nSelalu Utamakan Prediksi Sendiri`;
                     html += `<div class="card"><h3>${p}</h3><pre class="prediksi-text" id="p-${i}">${txt}</pre><button class="btn-copy" onclick="cp('p-${i}')">SALIN PREDIKSI</button></div>`;
                 });
@@ -147,11 +106,7 @@
                 view.innerHTML = `<div class="card"><h3>STATUS OPERASIONAL</h3><p style="color: #0f0; margin-bottom:10px;">BCA - ONLINE</p><p style="color: #0f0; margin-bottom:10px;">BNI - ONLINE</p><p style="color: #0f0; margin-bottom:10px;">BRI - ONLINE</p><p style="color: #0f0;">MANDIRI - ONLINE</p></div>`;
             }
         }
-
-        function cp(id) {
-            navigator.clipboard.writeText(document.getElementById(id).innerText);
-            alert("Data Prediksi Berhasil Disalin!");
-        }
+        function cp(id) { navigator.clipboard.writeText(document.getElementById(id).innerText); alert("Data Prediksi Berhasil Disalin!"); }
     </script>
 </body>
 </html>
